@@ -17,7 +17,7 @@ import Vuetify, {
 	VIcon,
 	VDivider,
 	VListTileAvatar,
-	VText,
+	
 	VDialog,
 	VContent,
 	VContainer,
@@ -53,7 +53,7 @@ Vue.use(Vuetify, {
 	VIcon,
 	VDivider,
 	VListTileAvatar,
-	VText,
+	
 	VDialog,
 	VContent,
 	VContainer,

@@ -2,14 +2,19 @@
 	v-app
 		v-content
 			v-container(fluid)
-				router-view
+				app-header
+				
 </template>
 <script>
+import AppHeader from '@/components/AppHeader'
 export default{
 	data(){
 		return{
 			
 		}
+	},
+	components:{
+		AppHeader
 	}
 }
 </script>
