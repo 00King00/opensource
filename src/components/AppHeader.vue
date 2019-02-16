@@ -42,19 +42,30 @@
 					v-btn(color='blue darken-1', flat, @click='signup_dialog = false') Close
 					v-btn(color='blue darken-1', flat, @click='onSubmit') Submit
 	v-layout(row fill-height)
-		v-flex(v-if="logging")
+		v-flex(v-if="logging").sidebar
 			v-navigation-drawer(v-model='drawer', :mini-variant='mini', dark  stateless permanent)
 				v-list.pa-1
 					v-list-tile( avatar to='/')
 						v-list-tile-avatar OSW
+				v-divider(light)
 				v-list.pt-0(dense)
-					v-divider(light)
+					v-list-group(v-for='(item, index) in side_bar_menu_1', :key='`side_bar_menu_1${index}`',
+					:to='item.path' v-model='item.active',  :prepend-icon="item.icon"  )
+						v-list-tile(slot='activator')
+							v-list-tile-content
+								v-list-tile-title {{ item.title }}
+						v-list-tile(v-for='subItem in item.child_list', :key='subItem.subTitle' :to='subItem.path' )
+							v-list-tile-action.pl-12.pr-3
+								v-icon {{subItem.icon}}
+							v-list-tile-content
+								v-list-tile-title {{ subItem.subTitle }}
+				v-list.pt-0(dense)
 					v-list-tile(v-for='(item, index) in side_bar_menu', :key='`side_bar_menu_${index}`', :to='item.path')
 						v-list-tile-action
 							v-icon {{ item.icon }}
 						v-list-tile-content
 							v-list-tile-title {{ item.title }}
-		v-flex
+		v-flex()
 			v-toolbar
 				v-toolbar-side-icon(v-if="logging" @click.stop='mini = !mini')
 				v-toolbar-title OpenSourceWebsite
@@ -95,8 +106,13 @@ data(){
 		password:"",
 		checkbox: false,
 		drawer: true,
+		side_bar_menu_1:[	{ title: 'Data', icon: 'edit', path: '/data', active: true,
+			child_list:[
+				{subTitle:"Country", icon: "call_split", path: '/data/country'},
+				{subTitle:"Currency", icon: "money", path: '/data/currency'},
+				{subTitle:"Language", icon: "g_translate", path: '/data/language'}
+			]},],
 		side_bar_menu: [
-			{ title: 'Data', icon: 'edit', path: '/'},
 			{ title: 'Issues', icon: 'edit', path: '/issue'},
 			{ title: 'Website settings', icon: 'bug_report', path: '/website-settings'},
 			{ title: 'Moqups', icon: 'edit', path: '/moqup'},
@@ -128,13 +144,16 @@ methods:{
 
 }
 </script>
-
 <style scoped lang="sass">
+.sidebar.flex
+	flex: initial
 .v-badge__badge
 	top: -4px
 .v-btn
 	min-width: 60px
 .header
 	height: 100%
+.pl-12
+	padding-left: 12px
 
 </style>

@@ -1,7 +1,5 @@
 <template lang="pug">
-v-card
-	v-card-title This is a Cron-job page
-
+	h1 This is a Cron Job Log page
 </template>
 <script>
 export default {

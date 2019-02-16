@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
 import Home from '@/views/Home.vue'
 import CronJob from '@/views/CronJob.vue'
 import Data from '@/views/Data.vue'
+import Country from '@/views/Country.vue'
+import Currency from '@/views/Currency.vue'
+import Language from '@/views/Language.vue'
 import Issues from '@/views/Issues.vue'
 import WebsiteSettings from '@/views/WebsiteSettings.vue'
 import WikipediaPages from '@/views/WikipediaPages.vue'
@@ -24,9 +26,23 @@ export default new Router({
 			component: Home
 		},
 		{
-			path: '/data',
+			path: '/data/',
 			name: 'data',
-			component: Data
+			component: Data,
+			children: [
+				{
+					path: 'country',
+					component: Country
+				},
+				{
+					path: 'currency',
+					component:Currency
+				},
+				{
+					path: 'language',
+					component:Language
+				}
+			]
 		},
 		{
 			path: '/issue',

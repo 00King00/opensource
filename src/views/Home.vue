@@ -4,12 +4,12 @@
 			p
 				| OpenSourceWebsite (OSW) is an open source website for the world's largest online social community. The Website is managed by users. The Website will look like and what functions it will have depends on users' decisions. The Website is updated after each code change. So everyone can influence how the Website works.
 			p We want the Web to be even better. We want more people using it for more things. We want it to continue to drive creativity, education and economic growth. And we want to empower people to help shape the Web as they move more of their lives online
-		v-card-title.headline.py-0.font-weight-bold Our vision and mission
+		v-card-title.headline.pt-0.pb-2.font-weight-bold Our vision and mission
 		v-card-text.py-0
 			ul.text-sm-left(v-for="(item, index) in list" :key="`list_${index}`")
 				li
 					a(href="#") {{item.title}}
-		v-card-title.font-weight-bold Join to us!
+		v-card-title.font-weight-bold.px-4 Join to us!
 </template>
 
 <script>

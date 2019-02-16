@@ -1,11 +1,9 @@
-<template>
-	<div>
-		<router-view></router-view>
-	</div>
+<template lang="pug">
+	h1 This is a Language page
 </template>
 <script>
 export default {
-  name: '',
+	name: '',
 	data(){
 		return{
 
