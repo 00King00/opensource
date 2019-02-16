@@ -1,6 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Home from '@/views/Home.vue'
+import CronJob from '@/views/CronJob.vue'
+import Data from '@/views/Data.vue'
+import Issues from '@/views/Issues.vue'
+import WebsiteSettings from '@/views/WebsiteSettings.vue'
+import WikipediaPages from '@/views/WikipediaPages.vue'
+import Moqup from '@/views/Moqup.vue'
+import Users from '@/views/Users.vue'
+import SupportGroups from '@/views/SupportGroups.vue'
+
 
 Vue.use(Router)
 
@@ -21,12 +31,12 @@ export default new Router({
 		{
 			path: '/issue',
 			name: 'issue',
-			component: Issue
+			component: Issues
 		},
 		{
 			path: '/website-settings',
 			name: 'website-settings',
-			component: Website-settings
+			component: WebsiteSettings
 		},
 		{
 			path: '/moqup',
@@ -34,35 +44,24 @@ export default new Router({
 			component: Moqup
 		},
 		{
-			path: '/user',
-			name: 'user',
-			component: User
+			path: '/users',
+			name: 'users',
+			component: Users
 		},
 		{
 			path: '/wikipedia-pages',
 			name: 'wikipedia-pages',
-			component: Wikipedia-pages
+			component: WikipediaPages
 		},
 		{
 			path: '/cron-job',
 			name: 'cron-job',
-			component: Cron-job
+			component: CronJob
 		},
 		{
-
-			path: '/cron-job',
-			name: 'cron-job',
-			component: Cron-job
-		},
-		{
-			path: '/cron-job',
-			name: 'cron-job',
-			component: Cron-job
-		},
-		{
-			path: '/cron-job',
-			name: 'cron-job',
-			component: Cron-job
-		},
+			path: '/support-groups',
+			name: 'support-groups',
+			component: SupportGroups
+		}
 	]
 })

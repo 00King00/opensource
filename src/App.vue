@@ -1,20 +1,23 @@
 <template lang="pug">
 	v-app
 		v-content
-			v-container(fluid)
-				app-header
-				
+			app-header
+				router-view
+				app-footer
+
 </template>
 <script>
 import AppHeader from '@/components/AppHeader'
+import AppFooter from '@/components/AppFooter'
 export default{
 	data(){
 		return{
-			
+
 		}
 	},
 	components:{
-		AppHeader
+		AppHeader,
+		AppFooter
 	}
 }
 </script>

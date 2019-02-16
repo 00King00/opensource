@@ -45,11 +45,11 @@
 		v-flex(v-if="logging")
 			v-navigation-drawer(v-model='drawer', :mini-variant='mini', dark  stateless permanent)
 				v-list.pa-1
-					v-list-tile( avatar)
+					v-list-tile( avatar to='/')
 						v-list-tile-avatar OSW
 				v-list.pt-0(dense)
 					v-divider(light)
-					v-list-tile(v-for='item in items', :key='item.title', @click='')
+					v-list-tile(v-for='(item, index) in side_bar_menu', :key='`side_bar_menu_${index}`', :to='item.path')
 						v-list-tile-action
 							v-icon {{ item.icon }}
 						v-list-tile-content
@@ -62,14 +62,32 @@
 				v-toolbar-items
 					v-btn(flat @click='signup_dialog = true') Signup
 					v-btn(flat @click='login_dialog = true') Login
-			router-view
+				v-menu(offset-y left)
+					v-btn(flat depressed slot="activator")
+						v-badge(color="transparent" lg)
+							span(slot="badge")
+								v-icon(color="black" medium) arrow_drop_down
+							v-icon  language
+					v-list
+						v-list-tile(v-for='(item, index) in drop_power_menu', :key='`drop_power_menu_${index}`', @click='')
+							v-list-tile-title {{ item.title }}
+				v-menu(offset-y left)
+					v-btn(flat depressed slot="activator")
+						v-badge(color="" lg)
+							span(slot="badge")
+								v-icon(color="black" medium) arrow_drop_down
+							v-icon  power_settings_new
+					v-list
+						v-list-tile(v-for='(item, index) in country_menu', :key='`country_menu_${index}`', @click='')
+							v-list-tile-title {{ item.title }}
+			slot
 </template>
 
 <script>
 export default {
-  name: 'AppHeader',
-  data(){
-	  return {
+name: 'AppHeader',
+data(){
+	return {
 		logging: true,
 		login_dialog: false,
 		signup_dialog:false,
@@ -77,31 +95,46 @@ export default {
 		password:"",
 		checkbox: false,
 		drawer: true,
-		items: [
-			{ title: 'Data', icon: 'edit' },
-			{ title: 'Issues', icon: 'edit' },
-			{ title: 'Website settings', icon: 'bug_report' },
-			{ title: 'Moqups', icon: 'edit' },
-			{ title: 'Users', icon: 'supervised_user_circle' },
-			{ title: 'Wikipedia Watchlists', icon: 'library_books' },
-			{ title: 'Cron Job Log', icon: 'list' },
-			{ title: 'Support groups', icon: 'contact_support' },
+		side_bar_menu: [
+			{ title: 'Data', icon: 'edit', path: '/'},
+			{ title: 'Issues', icon: 'edit', path: '/issue'},
+			{ title: 'Website settings', icon: 'bug_report', path: '/website-settings'},
+			{ title: 'Moqups', icon: 'edit', path: '/moqup'},
+			{ title: 'Users', icon: 'supervised_user_circle', path: '/users'},
+			{ title: 'Wikipedia Watchlists', icon: 'library_books', path: '/wikipedia-pages'},
+			{ title: 'Cron Job Log', icon: 'list', path: '/cron-job'},
+			{ title: 'Support groups', icon: 'contact_support', path: '/support-groups'},
 		],
-		mini: true
-	  }
-  },
-  methods:{
-	onSubmit(){
-		// const user = {
-		// 	email: this.email,
-		// 	password: this.password
-		// };
+		mini: true,
+		drop_power_menu: [
+			{ title: 'Click Me' },
+			{ title: 'Click Me' },
+			{ title: 'Click Me' },
+			{ title: 'Click Me 2' }
+		],
+		country_menu:[
+			{ title: 'country_menu' },
+			{ title: 'country_menu' },
+			{ title: 'country_menu' },
+			{ title: 'country_menu 2' }
+		]
+
 	}
-  }
+},
+methods:{
+	onSubmit(){
+	}
+}
 
 }
 </script>
 
 <style scoped lang="sass">
+.v-badge__badge
+	top: -4px
+.v-btn
+	min-width: 60px
+.header
+	height: 100%
 
 </style>

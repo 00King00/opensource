@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'vuetify/dist/vuetify.min.css'
+import '@/assets/sass/main.sass'
 import Vuetify, {
 	VApp, // required
 	VNavigationDrawer,
@@ -17,13 +18,15 @@ import Vuetify, {
 	VIcon,
 	VDivider,
 	VListTileAvatar,
-	
+	VBadge,
+	VMenu,
 	VDialog,
 	VContent,
 	VContainer,
 	VBtn,
 	VSpacer,
 	VLayout,
+	VFooter,
 	VFlex,
 	VCardTitle,
 	VTextField,
@@ -53,13 +56,15 @@ Vue.use(Vuetify, {
 	VIcon,
 	VDivider,
 	VListTileAvatar,
-	
+	VBadge,
+	VMenu,
 	VDialog,
 	VContent,
 	VContainer,
 	VBtn,
 	VSpacer,
 	VLayout,
+	VFooter,
 	VFlex,
 	VCardTitle,
 	VTextField,
