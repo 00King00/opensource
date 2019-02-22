@@ -41,7 +41,9 @@ nav
 					v-spacer
 					v-btn(color='blue darken-1', flat, @click='signup_dialog = false') Close
 					v-btn(color='blue darken-1', flat, @click='onSubmit') Submit
-	v-navigation-drawer(v-model='drawer', :mini-variant='mini',  mobile-break-point="960" dark  app)
+	//v-hover
+		v-navigation-drawer(v-model='drawer', clipped hide-overlay :temporary="hover && mini" slot-scope="{ hover }" :mini-variant="mini && !hover",  mobile-break-point="960" dark  app)
+	v-navigation-drawer(v-model='drawer', :mini-variant="mini",  mobile-break-point="960" dark  app hide-overlay)
 		v-list.pa-1
 			v-list-tile( avatar to='/')
 				v-list-tile-avatar OSW
@@ -63,7 +65,7 @@ nav
 					v-icon {{ item.icon }}
 				v-list-tile-content
 					v-list-tile-title {{ item.title }}
-	v-toolbar(app)
+	v-toolbar(app )
 		v-toolbar-side-icon.hidden-sm-and-down(v-if="logging" @click.stop='mini = !mini')
 		v-toolbar-side-icon.hidden-md-and-up(v-if="logging" @click.stop='onNavShow')
 		v-toolbar-title OpenSourceWebsite
@@ -156,5 +158,4 @@ methods:{
 	height: 100%
 .pl-12
 	padding-left: 12px
-
 </style>
