@@ -1,5 +1,5 @@
 <template lang='pug'>
-.header
+nav
 	v-layout(row, wrap justify-center)
 		v-dialog(v-model='login_dialog',  max-width='800px')
 			v-card
@@ -41,57 +41,54 @@
 					v-spacer
 					v-btn(color='blue darken-1', flat, @click='signup_dialog = false') Close
 					v-btn(color='blue darken-1', flat, @click='onSubmit') Submit
-	v-layout(row fill-height)
-		v-flex(v-if="logging").sidebar
-			v-navigation-drawer(v-model='drawer', :mini-variant='mini', dark  stateless permanent)
-				v-list.pa-1
-					v-list-tile( avatar to='/')
-						v-list-tile-avatar OSW
-				v-divider(light)
-				v-list.pt-0(dense)
-					v-list-group(v-for='(item, index) in side_bar_menu_1', :key='`side_bar_menu_1${index}`',
-					:to='item.path' v-model='item.active',  :prepend-icon="item.icon"  )
-						v-list-tile(slot='activator')
-							v-list-tile-content
-								v-list-tile-title {{ item.title }}
-						v-list-tile(v-for='subItem in item.child_list', :key='subItem.subTitle' :to='subItem.path' )
-							v-list-tile-action.pl-12.pr-3
-								v-icon {{subItem.icon}}
-							v-list-tile-content
-								v-list-tile-title {{ subItem.subTitle }}
-				v-list.pt-0(dense)
-					v-list-tile(v-for='(item, index) in side_bar_menu', :key='`side_bar_menu_${index}`', :to='item.path')
-						v-list-tile-action
-							v-icon {{ item.icon }}
-						v-list-tile-content
-							v-list-tile-title {{ item.title }}
-		v-flex()
-			v-toolbar
-				v-toolbar-side-icon(v-if="logging" @click.stop='mini = !mini')
-				v-toolbar-title OpenSourceWebsite
-				v-spacer
-				v-toolbar-items
-					v-btn(flat @click='signup_dialog = true') Signup
-					v-btn(flat @click='login_dialog = true') Login
-				v-menu(offset-y left)
-					v-btn(flat depressed slot="activator")
-						v-badge(color="transparent" lg)
-							span(slot="badge")
-								v-icon(color="black" medium) arrow_drop_down
-							v-icon  language
-					v-list
-						v-list-tile(v-for='(item, index) in drop_power_menu', :key='`drop_power_menu_${index}`', @click='')
-							v-list-tile-title {{ item.title }}
-				v-menu(offset-y left)
-					v-btn(flat depressed slot="activator")
-						v-badge(color="" lg)
-							span(slot="badge")
-								v-icon(color="black" medium) arrow_drop_down
-							v-icon  power_settings_new
-					v-list
-						v-list-tile(v-for='(item, index) in country_menu', :key='`country_menu_${index}`', @click='')
-							v-list-tile-title {{ item.title }}
-			slot
+	v-navigation-drawer(v-model='drawer', :mini-variant='mini',  mobile-break-point="960" dark  app)
+		v-list.pa-1
+			v-list-tile( avatar to='/')
+				v-list-tile-avatar OSW
+		v-divider(light)
+		v-list.pt-0(dense)
+			v-list-group(v-for='(item, index) in side_bar_menu_1', :key='`side_bar_menu_1${index}`',
+			:to='item.path' v-model='item.active',  :prepend-icon="item.icon"  )
+				v-list-tile(slot='activator')
+					v-list-tile-content
+						v-list-tile-title {{ item.title }}
+				v-list-tile(v-for='subItem in item.child_list', :key='subItem.subTitle' :to='subItem.path' )
+					v-list-tile-action.pl-12.pr-3
+						v-icon {{subItem.icon}}
+					v-list-tile-content
+						v-list-tile-title {{ subItem.subTitle }}
+		v-list.pt-0(dense)
+			v-list-tile(v-for='(item, index) in side_bar_menu', :key='`side_bar_menu_${index}`', :to='item.path')
+				v-list-tile-action
+					v-icon {{ item.icon }}
+				v-list-tile-content
+					v-list-tile-title {{ item.title }}
+	v-toolbar(app)
+		v-toolbar-side-icon.hidden-sm-and-down(v-if="logging" @click.stop='mini = !mini')
+		v-toolbar-side-icon.hidden-md-and-up(v-if="logging" @click.stop='onNavShow')
+		v-toolbar-title OpenSourceWebsite
+		v-spacer
+		v-toolbar-items
+			v-btn(flat @click='signup_dialog = true') Signup
+			v-btn(flat @click='login_dialog = true') Login
+		v-menu(offset-y left)
+			v-btn(flat depressed slot="activator")
+				v-badge(color="transparent" lg)
+					span(slot="badge")
+						v-icon(color="black" medium) arrow_drop_down
+					v-icon  language
+			v-list
+				v-list-tile(v-for='(item, index) in drop_power_menu', :key='`drop_power_menu_${index}`')
+					v-list-tile-title {{ item.title }}
+		v-menu(offset-y left)
+			v-btn(flat depressed slot="activator")
+				v-badge(color="" lg)
+					span(slot="badge")
+						v-icon(color="black" medium) arrow_drop_down
+					v-icon  power_settings_new
+			v-list
+				v-list-tile(v-for='(item, index) in country_menu', :key='`country_menu_${index}`')
+					v-list-tile-title {{ item.title }}
 </template>
 
 <script>
@@ -106,6 +103,7 @@ data(){
 		password:"",
 		checkbox: false,
 		drawer: true,
+		mini: false,
 		side_bar_menu_1:[	{ title: 'Data', icon: 'edit', path: '/data', active: true,
 			child_list:[
 				{subTitle:"Country", icon: "call_split", path: '/data/country'},
@@ -121,7 +119,6 @@ data(){
 			{ title: 'Cron Job Log', icon: 'list', path: '/cron-job'},
 			{ title: 'Support groups', icon: 'contact_support', path: '/support-groups'},
 		],
-		mini: true,
 		drop_power_menu: [
 			{ title: 'Click Me' },
 			{ title: 'Click Me' },
@@ -139,14 +136,18 @@ data(){
 },
 methods:{
 	onSubmit(){
+	},
+	onNavShow(){
+		this.mini= false
+		this.drawer = !this.drawer
 	}
 }
 
 }
 </script>
 <style scoped lang="sass">
-.sidebar.flex
-	flex: initial
+/* .sidebar.flex
+	//flex: initial */
 .v-badge__badge
 	top: -4px
 .v-btn

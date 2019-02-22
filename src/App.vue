@@ -1,9 +1,9 @@
 <template lang="pug">
 	v-app
+		app-header
 		v-content
-			app-header
-				router-view
-				app-footer
+			router-view
+			app-footer
 
 </template>
 <script>
