@@ -46,7 +46,7 @@ export default new Router({
 		},
 		{
 			path: '/issue',
-			name: 'issue',
+			name: 'Issues',
 			component: Issues
 		},
 		{
