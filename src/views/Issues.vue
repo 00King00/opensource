@@ -7,7 +7,7 @@
 				v-breadcrumbs(:items='items')
 					template(v-slot:item='props')
 						v-breadcrumbs-item(:to='props.item.to', :disabled="props.item.disabled") {{ props.item.text }}
-			v-layout(justify-space-between)
+			v-layout(justify-space-between align-center)
 				v-flex.text-xs-left()
 					v-btn-toggle(v-model="toggle_btn")
 						v-btn( value="New"  ) New
@@ -18,9 +18,9 @@
 				v-flex
 					v-layout(justify-space-between)
 						v-flex
-							v-layout(justify-space-between)
+							v-layout(justify-space-between align-center)
 								v-text-field(label='Solo', single-line, solo append-icon="search")
-								v-btn.px-0(icon)
+								v-btn.px-0(icon).ma-0
 									v-icon search
 						v-btn(color="success") New Issue
 
@@ -53,6 +53,8 @@ export default {
 }
 </script>
 <style scoped lang="sass">
-.btn--active .btn__content:before
-	background-color: red
+.v-btn--icon:before
+	border-radius: unset
+.v-btn--icon:before
+	background-color: currentColor
 </style>
