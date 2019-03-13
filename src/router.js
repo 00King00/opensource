@@ -8,6 +8,7 @@ import Currency from '@/views/Currency.vue'
 import Language from '@/views/Language.vue'
 import Issues from '@/views/Issues.vue'
 import WebsiteSettings from '@/views/WebsiteSettings.vue'
+import WebsiteSettingsView from '@/views/WebsiteSettingsView.vue'
 import WikipediaPages from '@/views/WikipediaPages.vue'
 import Moqup from '@/views/Moqup.vue'
 import Users from '@/views/Users.vue'
@@ -51,8 +52,14 @@ export default new Router({
 		},
 		{
 			path: '/website-settings',
-			name: 'website-settings',
-			component: WebsiteSettings
+			name: 'Website settings',
+			component: WebsiteSettings,
+			children: [
+				{
+					path: ':id/view',
+					component: WebsiteSettingsView
+				}
+			]
 		},
 		{
 			path: '/moqup',
