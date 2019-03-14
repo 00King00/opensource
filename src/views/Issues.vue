@@ -158,13 +158,5 @@ input
 	padding: 6px;
 .theme--light.v-table thead th
 	color: red
-.vote
-	position: relative
-	span
-		position: absolute
-		top: 15px
-		color: white
-		z-index: 2
-		left: 50%
-		transform: translateX(-50%)
+
 </style>

@@ -1,18 +1,19 @@
 <template lang="pug">
 .full-height
-	v-layout(justify-space-between align-center).px-3.py-4
-		.headline.font-weight-bold {{ $route.name}}
-		v-breadcrumbs(:items='breadcrumbs')
-			template(v-slot:item='props')
-				v-breadcrumbs-item(:to='props.item.to', :disabled="props.item.disabled") {{ props.item.text }}
-	v-layout()
-		v-data-table.elevation-4.px-3.pb-3.full-width(:headers='headers', :items='data', :rows-per-page-items='[10, 15, 20, 25]')
-			template(v-slot:items='props')
-				td.text-xs-left
-					//a(href="#" @click="router.push(':props.item.id/view')") {{ props.item.name}}
-					router-link.nav-link(:to="`${props.item.id}/view`") {{ props.item.name}}
-				td.text-xs-left {{ props.item.value }}
-				td.text-xs-left {{ props.item.last_update }}
+	router-view
+	.website-settings-page(v-if="$route.path == '/website-settings'")
+		v-layout(justify-space-between align-center).px-3.py-4
+			.headline.font-weight-bold {{ $route.name}}
+			v-breadcrumbs(:items='breadcrumbs')
+				template(v-slot:item='props')
+					v-breadcrumbs-item(:to='props.item.to', :disabled="props.item.disabled") {{ props.item.text }}
+		v-layout()
+			v-data-table.elevation-4.px-3.pb-3.full-width(:headers='headers', :items='data', :rows-per-page-items='[10, 15, 20, 25]')
+				template(v-slot:items='props')
+					td.text-xs-left
+						router-link.nav-link(:to="`/website-settings/view/${props.item.id}`") {{ props.item.name}}
+					td.text-xs-left {{ props.item.value }}
+					td.text-xs-left {{ props.item.last_update }}
 </template>
 <script>
 export default {
@@ -93,6 +94,8 @@ export default {
 			]
 
 		}
+	},
+	created(){
 	},
 	methods:{
 

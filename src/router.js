@@ -56,8 +56,8 @@ export default new Router({
 			component: WebsiteSettings,
 			children: [
 				{
-					path: ':id/view',
-					component: WebsiteSettingsView
+					path: 'view/:id',
+					component: WebsiteSettingsView,
 				}
 			]
 		},
