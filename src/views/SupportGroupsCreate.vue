@@ -18,29 +18,40 @@ div
 					v-flex(xs12).text-xs-left
 						.subheader Name
 					v-flex(xs12).text-xs-left
-						v-text-field(solo)
+						input.input
 				v-layout(justify-space-between align-center wrap).px-3.py-4
 					v-flex(xs12).text-xs-left Languages
 					v-flex(xs12).text-xs-left
-						v-layout(justify-space-between align-center wrap)
-							v-flex(sm3 v-for="n in 30")
-								v-checkbox(label='info', color='Afar', value='info', hide-details)
+						v-layout(justify-space-between wrap)
+							v-flex(xs6 sm4 md3 v-for="n in 30")
+								v-checkbox.my-0( :label="`test ${n}`", color='info', :value="`test ${n}`", v-model="select" hide-details)
+						v-layout.pt-5
+							v-btn(color="success") Save
+							v-btn Cancel
 </template>
 <script>
 export default {
   name: '',
 	data(){
 		return{
-			
+			select: null
 		}
 	},
-	methods:{
-
+	computed:{
+		test(){
+			console.log(this.select);
+		}
 	}
 
 }
 </script>
 <style scoped lang="sass">
+.input
+	width: 280px
+	height: 35px
+	border: 1px solid grey
+	padding: 5px 20px
+	border-radius: 5px
 a
 	text-decoration: none
 </style>

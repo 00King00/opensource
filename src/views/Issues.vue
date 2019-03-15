@@ -34,7 +34,7 @@
 							td.text-xs-left
 								a(href="#") {{ props.item.title }}
 							td.text-xs-left {{ props.item.date }}
-							td.text-xs-left.vote 
+							td.text-xs-left.vote
 								span {{ props.item.votes }}%
 								v-progress-linear(color='success', height='20', :value='props.item.votes')
 </template>
@@ -53,31 +53,31 @@ export default {
 					title: "Comments for Issues",
 					date: "4 months ago",
 					votes: 50,
-					id: "1"	
+					id: "1"
 				},
 				{
 					title: "Delegates for issues",
 					date: "3 months ago",
 					votes: 40,
-					id: "2"	
+					id: "2"
 				},
 				{
 					title: "Votes for website settings",
 					date: "1 months ago",
 					votes: 90,
-					id: "3"	
+					id: "3"
 				},
 				{
 					title: "Comments for Moqups",
 					date: "1 months ago",
 					votes: 10,
-					id: "4"	
+					id: "4"
 				},
 				{
 					title: "tese",
 					date: "",
 					votes: 0,
-					id: "5"	
+					id: "5"
 				},
 			],
 			data_yes:[
@@ -85,7 +85,7 @@ export default {
 					title: "Comments for Issues",
 					date: "4 months ago",
 					votes: 50,
-					id: "1"	
+					id: "1"
 				},
 			],
 			data_no:[],
@@ -94,7 +94,7 @@ export default {
 					title: "Delegates for issues",
 					date: "3 months ago",
 					votes: 40,
-					id: "2"	
+					id: "2"
 				},
 			],
 			toggle_btn: 'data_new',
@@ -115,11 +115,11 @@ export default {
 	computed:{
 		data_all(){
 			if('data_new' == this.toggle_btn){
-				return this.data_new	
+				return this.data_new
 			}else if('data_yes' == this.toggle_btn){
-				return this.data_yes	
+				return this.data_yes
 			}else if('data_no' == this.toggle_btn){
-				return this.data_no	
+				return this.data_no
 			}else{
 				return this.data_yours
 			}
