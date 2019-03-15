@@ -2,17 +2,23 @@
 div
 	v-layout(justify-space-between align-center).px-3.py-4
 		.headline.font-weight-bold View website setting: {{ fetchData.name}}
-	v-layout(justify-space-between align-center).px-3
-		v-data-table.elevation-4.px-3.pb-3.full-width(:headers='headers', :items='data_mockup', hide-actions, :rows-per-page-items='[5, 15, 20, 25]')
-			template(v-slot:items='props')
-				td.text-xs-left
-					v-icon(color="yellow") star_rate
-				td.text-xs-left {{ props.item.value }}
-				td.text-xs-left.vote 
-					span {{ props.item.votes }}%
-					v-progress-linear(color='success', height='20', :value='props.item.votes')
-				td.text-xs-left
-					.badge.px-2 Your vote
+	v-layout(justify-space-between align-center wrap).px-3
+		v-flex(xs12)
+			v-card(elevation="1")
+				v-card-text.text-xs-right
+					v-btn(color='success') New value
+		v-flex(xs12)
+			v-data-table.elevation-4.full-width(:headers='headers', :items='data_mockup', hide-actions, :rows-per-page-items='[5, 15, 20, 25]')
+				template(v-slot:items='props')
+					td.text-xs-left
+						v-icon.d-inline-block(color="yellow" ) {{props.item.icon}}
+					td.text-xs-left {{ props.item.value }}
+					td.text-xs-left.vote 
+						span {{ props.item.votes }}%
+						v-progress-linear(color='success', height='20', :value='props.item.votes')
+					td.text-xs-left
+						.badge.px-2(v-if="!props.item.vote") Your vote
+						v-btn.mx-0(v-if="props.item.vote") Vote
 </template>
 <script>
 export default {
@@ -77,16 +83,23 @@ export default {
 			],
 			fetchData: [],
 			headers: [
-				{ text: '#', sortable: false, align: 'left' },
+				{ text: '', sortable: false, align: 'left',  },
 				{ text: 'Value', sortable: false, class: 'font-weight-black' },
 				{ text: 'Vote', sortable: false, class: 'font-weight-black' },
-				{ text: '', sortable: false  },
+				{ text: '', sortable: false,   },
 			],
 			data_mockup:[
 				{
+					icon: "star_rate",
+					value: 31,
+					votes: 99,
+					vote: false
+				},
+				{
 					icon: "",
 					value: 31,
-					votes: 99
+					votes: 0,
+					vote: true
 				}
 			]
 
@@ -112,10 +125,13 @@ export default {
 }
 </script>
 <style scoped lang="sass">
-.column
-	widht: 50px
+.v-btn
+	text-transform: capitalize
+.v-icon
+    max-width: 25px
 .badge
 	color: #fff
 	background-color: #007bff
 	display: inline-block
+	border-radius: 3px
 </style>
