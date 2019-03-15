@@ -13,6 +13,7 @@ import WikipediaPages from '@/views/WikipediaPages.vue'
 import Moqup from '@/views/Moqup.vue'
 import Users from '@/views/Users.vue'
 import SupportGroups from '@/views/SupportGroups.vue'
+import SupportGroupsCreate from '@/views/SupportGroupsCreate.vue'
 
 
 Vue.use(Router)
@@ -83,8 +84,15 @@ export default new Router({
 		},
 		{
 			path: '/support-groups',
-			name: 'support-groups',
-			component: SupportGroups
+			name: 'Support Groups',
+			component: SupportGroups,
+			children: [
+				{
+					path: 'create',
+					component: SupportGroupsCreate,
+					name: 'Create Support Group'
+				}
+			]
 		}
 	]
 })
