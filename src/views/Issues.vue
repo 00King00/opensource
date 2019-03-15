@@ -141,6 +141,8 @@ export default {
 	display: inline-block
 .v-btn-toggle .v-btn
 	opacity: 0.8
+	&.v-btn--active
+		opacity: 1
 .v-btn
 	text-transform: capitalize
 	span
