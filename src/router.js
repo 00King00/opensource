@@ -79,7 +79,7 @@ export default new Router({
 		},
 		{
 			path: '/cron-job',
-			name: 'cron-job',
+			name: 'Cron Job Log',
 			component: CronJob
 		},
 		{

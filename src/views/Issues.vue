@@ -1,5 +1,5 @@
 <template lang="pug">
-.full-height.issues
+.full-height
 	v-layout(justify-space-between align-center).px-3.py-4
 		.headline.font-weight-bold {{ $route.name}}
 		v-breadcrumbs(:items='items')
@@ -29,7 +29,7 @@
 						v-btn(color="success") New Issue
 			v-layout
 				v-flex
-					v-data-table.elevation-1.px-3.pb-3(:headers='headers', :items='data_all')
+					v-data-table.elevation-1.px-3.pb-3.my-data-table(:headers='headers', :items='data_all')
 						template(v-slot:items='props')
 							td.text-xs-left
 								a(href="#") {{ props.item.title }}
@@ -136,7 +136,7 @@ export default {
 	color: black
 	background-color: #FAFAFA
 	padding: 0 4px
-	marin: 0 2px
+	margin: 0 2px
 	border-radius: 3px
 	display: inline-block
 .v-btn-toggle .v-btn
@@ -156,9 +156,6 @@ a
 	text-decoration: none
 input
 	border: 1px solid grey
-	width: 100%;
-	padding: 6px;
-.theme--light.v-table thead th
-	color: red
-
+	width: 100%
+	padding: 6px
 </style>
