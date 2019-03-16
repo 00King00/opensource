@@ -8,10 +8,12 @@ import Currency from '@/views/Currency.vue'
 import Language from '@/views/Language.vue'
 import Issues from '@/views/Issues.vue'
 import WebsiteSettings from '@/views/WebsiteSettings.vue'
+import WebsiteSettingsView from '@/views/WebsiteSettingsView.vue'
 import WikipediaPages from '@/views/WikipediaPages.vue'
 import Moqup from '@/views/Moqup.vue'
 import Users from '@/views/Users.vue'
 import SupportGroups from '@/views/SupportGroups.vue'
+import SupportGroupsCreate from '@/views/SupportGroupsCreate.vue'
 
 
 Vue.use(Router)
@@ -46,13 +48,19 @@ export default new Router({
 		},
 		{
 			path: '/issue',
-			name: 'issue',
+			name: 'Issues',
 			component: Issues
 		},
 		{
 			path: '/website-settings',
-			name: 'website-settings',
-			component: WebsiteSettings
+			name: 'Website settings',
+			component: WebsiteSettings,
+			children: [
+				{
+					path: 'view/:id',
+					component: WebsiteSettingsView,
+				}
+			]
 		},
 		{
 			path: '/moqup',
@@ -71,13 +79,20 @@ export default new Router({
 		},
 		{
 			path: '/cron-job',
-			name: 'cron-job',
+			name: 'Cron Job Log',
 			component: CronJob
 		},
 		{
 			path: '/support-groups',
-			name: 'support-groups',
-			component: SupportGroups
+			name: 'Support Groups',
+			component: SupportGroups,
+			children: [
+				{
+					path: 'create',
+					component: SupportGroupsCreate,
+					name: 'Create Support Group'
+				}
+			]
 		}
 	]
 })

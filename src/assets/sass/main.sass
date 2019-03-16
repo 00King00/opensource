@@ -2,3 +2,35 @@ body
 	font-size: 14px
 h1
 	margin: 40px 0
+.theme--light.v-table thead th
+	color: rgba(0,0,0,1)
+.v-btn
+	text-transform: capitalize
+	border-radius: 3px
+.full
+	&-height
+		height: 100%
+		background: #f4f6f9
+	&-width
+		width: 100%
+
+.my-data-table
+	.theme--light.v-table thead th
+		&:last-child
+			color: black
+		color: #007bff
+		&.column.sortable:hover
+			color: #007bff
+		&.column.sortable.active
+			.v-icon
+				color: #007bff
+			color: #007bff
+.vote
+	position: relative
+	span
+		position: absolute
+		top: 15px
+		color: white
+		z-index: 2
+		left: 50%
+		transform: translateX(-50%)

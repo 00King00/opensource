@@ -4,7 +4,6 @@
 		v-content
 			router-view
 			app-footer
-
 </template>
 <script>
 import AppHeader from '@/components/AppHeader'
