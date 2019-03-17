@@ -38,9 +38,6 @@ export default {
 		}
 	},
 	computed:{
-		test(){
-			console.log(this.select);
-		}
 	}
 
 }

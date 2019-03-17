@@ -74,7 +74,7 @@ export default new Router({
 		},
 		{
 			path: '/wikipedia-pages',
-			name: 'wikipedia-pages',
+			name: 'Wikipedia watchlists',
 			component: WikipediaPages
 		},
 		{
