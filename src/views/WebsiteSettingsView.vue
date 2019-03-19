@@ -13,7 +13,7 @@ div
 					td.text-xs-left
 						v-icon.d-inline-block(color="yellow" ) {{props.item.icon}}
 					td.text-xs-left {{ props.item.value }}
-					td.text-xs-left.vote 
+					td.text-xs-left.vote
 						span {{ props.item.votes }}%
 						v-progress-linear(color='success', height='20', :value='props.item.votes')
 					td.text-xs-left
@@ -104,19 +104,17 @@ export default {
 			]
 
 		}
-		
+
 	},
 	computed:{
-		
+
 	},
 	created(){
-		this.data.some((item)=>{ 
+		this.data.some((item)=>{
 			if(item.id == this.$route.params.id){
 				return this.fetchData = item
 			}
 		})
-		console.log(this.fetchData);
-		
 	},
 	methods:{
 

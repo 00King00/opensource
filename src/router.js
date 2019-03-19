@@ -7,6 +7,7 @@ import Country from '@/views/Country.vue'
 import Currency from '@/views/Currency.vue'
 import Language from '@/views/Language.vue'
 import Issues from '@/views/Issues.vue'
+import IssuesCreate from '@/views/IssuesCreate.vue'
 import WebsiteSettings from '@/views/WebsiteSettings.vue'
 import WebsiteSettingsView from '@/views/WebsiteSettingsView.vue'
 import WikipediaPages from '@/views/WikipediaPages.vue'
@@ -49,7 +50,14 @@ export default new Router({
 		{
 			path: '/issue',
 			name: 'Issues',
-			component: Issues
+			component: Issues,
+			children: [
+				{
+					path: 'create',
+					name: 'Create Issue',
+					component: IssuesCreate,
+				}
+			]
 		},
 		{
 			path: '/website-settings',
@@ -74,7 +82,7 @@ export default new Router({
 		},
 		{
 			path: '/wikipedia-pages',
-			name: 'wikipedia-pages',
+			name: 'Wikipedia watchlists',
 			component: WikipediaPages
 		},
 		{

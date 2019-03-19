@@ -1,13 +1,15 @@
 <template lang="pug">
 .full-height
-	v-layout(justify-space-between align-center).px-3.py-4
-		.headline.font-weight-bold {{ $route.name}}
-		v-breadcrumbs(:items='items')
-			template(v-slot:item='props')
-				v-breadcrumbs-item(:to='props.item.to', :disabled="props.item.disabled") {{ props.item.text }}
-	v-card(elevation="0").px-0.mx-3
-		v-card-text
-			v-layout.mb-3(justify-space-between align-center wrap)
+	router-view
+	div(v-if="$route.path == '/issue'")
+		v-layout(justify-space-between align-center).px-3.pt-4
+			.headline.font-weight-bold {{ $route.name}}
+			v-breadcrumbs(:items='items')
+				template(v-slot:item='props')
+					v-breadcrumbs-item(:to='props.item.to', :disabled="props.item.disabled") {{ props.item.text }}
+		v-card(elevation="0").px-0.mx-3
+		v-card-text.px-0
+			v-layout.mb-3.px-3(justify-space-between align-center wrap)
 				v-flex.text-xs-left(xs12 sm6)
 					v-btn-toggle(v-model="toggle_btn" dark)
 						v-btn( value="data_new" color="info")
@@ -26,7 +28,7 @@
 								input(type="text", placeholder="Search")
 								v-btn.px-0(icon).ma-0
 									v-icon search
-						v-btn(color="success") New Issue
+						v-btn(color="success" to="/issue/create") New Issue
 			v-layout
 				v-flex
 					v-data-table.elevation-1.px-3.pb-3.my-data-table(:headers='headers', :items='data_all')
