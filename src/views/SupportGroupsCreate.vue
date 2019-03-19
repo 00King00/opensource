@@ -46,7 +46,7 @@ export default {
 .input
 	width: 280px
 	height: 35px
-	border: 1px solid grey
+	border: 1px solid #CFD8DC
 	padding: 5px 20px
 	border-radius: 5px
 a

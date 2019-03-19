@@ -78,7 +78,7 @@ nav
 				v-badge(color="transparent" lg)
 					span(slot="badge")
 						v-icon(color="black" medium) arrow_drop_down
-					v-icon  language
+					v-icon()  language
 			v-list
 				v-list-tile(v-for='(item, index) in drop_power_menu', :key='`drop_power_menu_${index}`')
 					v-list-tile-title {{ item.title }}
@@ -87,7 +87,7 @@ nav
 				v-badge(color="" lg)
 					span(slot="badge")
 						v-icon(color="black" medium) arrow_drop_down
-					v-icon  power_settings_new
+					v-icon(color="primary")  power_settings_new
 			v-list
 				v-list-tile(v-for='(item, index) in country_menu', :key='`country_menu_${index}`')
 					v-list-tile-title {{ item.title }}
