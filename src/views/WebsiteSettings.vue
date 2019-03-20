@@ -8,7 +8,7 @@
 				template(v-slot:item='props')
 					v-breadcrumbs-item(:to='props.item.to', :disabled="props.item.disabled") {{ props.item.text }}
 		v-layout()
-			v-data-table.elevation-4.px-3.pb-3.full-width(:headers='headers', :items='data', :rows-per-page-items='[10, 15, 20, 25]')
+			v-data-table.px-3.pb-3.full-width(:headers='headers', :items='data', :rows-per-page-items='[10, 15, 20, 25]')
 				template(v-slot:items='props')
 					td.text-xs-left
 						router-link.nav-link(:to="`/website-settings/view/${props.item.id}`") {{ props.item.name}}

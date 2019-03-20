@@ -1,7 +1,7 @@
 <template lang="pug">
 div
 	.title.pt-5.pb-2.text-xs-left.px-3 Language
-	v-data-table.elevation-4.px-3.pb-3(:headers='headers', :items='data', :rows-per-page-items='[10, 15, 20, 25]')
+	v-data-table.px-3.pb-3(:headers='headers', :items='data', :rows-per-page-items='[10, 15, 20, 25]')
 		template(v-slot:items='props')
 			td.text-xs-left {{ props.index+1 }}
 			td.text-xs-left {{ props.item.name }}

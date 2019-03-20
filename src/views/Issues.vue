@@ -31,7 +31,7 @@
 						v-btn(color="success" to="/issue/create") New Issue
 			v-layout
 				v-flex
-					v-data-table.elevation-1.px-3.pb-3.my-data-table(:headers='headers', :items='data_all')
+					v-data-table.px-3.pb-3.my-data-table(:headers='headers', :items='data_all')
 						template(v-slot:items='props')
 							td.text-xs-left
 								a(href="#") {{ props.item.title }}
