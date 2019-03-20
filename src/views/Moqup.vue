@@ -10,7 +10,7 @@
 				v-flex.text-xs-right(xs12)
 					v-card(elevation="0").mx-3
 						v-card-text.py-1
-							v-btn.scoped-btn(color="success" to="/issue/create" outline)
+							v-btn.scoped-btn(color="success" to="/moqup/design-edit" outline)
 								v-icon add
 							v-btn-toggle(v-model="toggle_btn" dark)
 								v-btn( value="data_all" color="info")
@@ -72,10 +72,10 @@ export default {
 					id: "5"
 				},
 			],
-			data_yes:[],	
+			data_yes:[],
 			data_yours:[],
 			toggle_btn: 'data_all',
-			
+
 		}
 	},
 	computed:{

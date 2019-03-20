@@ -1,35 +1,45 @@
 <template lang="pug">
 div
 	.title.my-3 Params: {{ $route.params.id }}
-	v-tabs
-		v-tab(v-for='n in 3', :href="`#tab-${n}`") Item {{ n }}
-		v-tab-item(v-for='i in 3', :key='i', :value='"tab-" + i')
-			v-card(flat)
-				v-card-text() text {{i}}
+		v-card.mx-3
+		v-card-text
+			v-tabs
+				v-tab(v-for='(item, index) in tabsItem', :href="`#tab-${index+1}`") {{ item }}
+				v-tab-item( value='tab-1')
+					v-card(flat)
+						v-card-text text
+				v-tab-item(value='tab-2')
+					v-card(flat)
+						v-card-text
+							editor(v-model="contentHTML" @init="editorInit" lang="html" theme="chrome" width="100%" height="350")
+				v-tab-item(value='tab-3')
+					v-card(flat)
+						v-card-text
+							editor(v-model="contentCSS" @init="editorInit" lang="css" theme="chrome" width="100%" height="350")
 </template>
 <script>
 export default {
-	name: '',
 	data(){
 		return{
-		
-
+			contentView:'',
+			contentHTML: '<h1>Jade - node template engine</h1>\n<div class="col" id="container">\n\t<p>You are amazing</p>\n\t<p>Jade is a terse and simpletemplating language with astrong focus on performanceand powerful features.</p>\n</div>',
+			contentCSS:'#launch-dialog {\n\tbackground: tomato;\n\tborder-radius: 4px;\n\tcolor: #fff;font-family: Helvetica, Arial, sans-serif;\n\tpadding: 0.5rem 1rem;\n\tposition: static;\n}',
+			tabsItem: ["View", "HTML", "CSS"]
 		}
 	},
 	methods:{
-	editorInit: function () {
-		require('brace/ext/language_tools') //language extension prerequsite...
-		require('brace/mode/html')                
-		require('brace/mode/javascript')    //language
-		require('brace/mode/less')
-		require('brace/theme/chrome')
-		require('brace/snippets/javascript') //snippet
-	},
-
+		editorInit: function () {
+			require('brace/ext/language_tools')
+			require('brace/mode/html')
+			require('brace/mode/javascript')
+			require('brace/mode/less')
+			require('brace/theme/chrome')
+			require('brace/snippets/javascript')
+		},
 	},
 	components: {
-        editor: require('vue2-ace-editor'),
-    },
+		editor: require('vue2-ace-editor'),
+	},
 
 }
 </script>
