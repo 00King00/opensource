@@ -12,6 +12,7 @@ import WebsiteSettings from '@/views/WebsiteSettings.vue'
 import WebsiteSettingsView from '@/views/WebsiteSettingsView.vue'
 import WikipediaPages from '@/views/WikipediaPages.vue'
 import Moqup from '@/views/Moqup.vue'
+import MoqupView from '@/views/MoqupView.vue'
 import Users from '@/views/Users.vue'
 import SupportGroups from '@/views/SupportGroups.vue'
 import SupportGroupsCreate from '@/views/SupportGroupsCreate.vue'
@@ -72,8 +73,14 @@ export default new Router({
 		},
 		{
 			path: '/moqup',
-			name: 'moqup',
-			component: Moqup
+			name: 'Moqups',
+			component: Moqup,
+			children: [
+				{
+					path: 'design-view/:id',
+					component: MoqupView,
+				}
+			]
 		},
 		{
 			path: '/users',

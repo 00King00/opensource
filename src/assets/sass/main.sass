@@ -15,6 +15,15 @@ h1
 		width: 100%
 
 .my-data-table
+	&-all
+		.theme--light.v-table thead th
+			color: #007bff
+			&.column.sortable:hover
+				color: #007bff
+			&.column.sortable.active
+				.v-icon
+					color: #007bff
+				color: #007bff
 	.theme--light.v-table thead th
 		&:last-child
 			color: black
