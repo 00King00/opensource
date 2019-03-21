@@ -4,6 +4,7 @@ div
 		v-card.mx-3
 		v-card-text
 			v-tabs
+				v-tabs-slider(color="#17a2b8")
 				v-tab(v-for='(item, index) in tabsItem', :href="`#tab-${index+1}`") {{ item }}
 				v-tab-item( value='tab-1')
 					v-card(flat)
