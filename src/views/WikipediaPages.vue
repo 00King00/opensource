@@ -14,12 +14,12 @@
 								.text-xs-left.font-weight-bold Wiki Username
 								v-text-field(v-model="username" required solo hide-details).my-2
 								.text-xs-left Wiki Username cannot be blank.
-									a.d-block(href="3") Look your username here
+									a.d-block.mt-3(href="3") Look your username here
 							v-flex(xs12)
 								.text-xs-left.font-weight-bold Watchlist Token
 								v-text-field(v-model="WatchlistToken", required solo hide-details).my-2
 								.text-xs-left Watchlist Token cannot be blank.
-									a.d-block(href="3") Look your token here
+									a.d-block.mt-3(href="3") Look your token here
 			v-card-actions
 				v-spacer
 				v-btn( @click='dialog = false') Close
