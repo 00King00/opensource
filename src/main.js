@@ -5,7 +5,7 @@ import store from './store'
 import 'vuetify/dist/vuetify.min.css'
 import '@/assets/sass/main.sass'
 import Vuetify from 'vuetify'
- Vue.use(Vuetify)
+Vue.use(Vuetify)
 
 // import Vuetify, {
 // 	VApp, // required
