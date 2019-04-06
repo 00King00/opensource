@@ -31,10 +31,11 @@ export default {
 					id: "unic1",
 					userName: 'Vitaliy Shevchenko',
 					date: "a month ago",
-					text: "test \nREPLY",
+					text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.REPLY ",
 					replies: [{
-						userName: 'Vitaliy Shevchenko',
-						date: "a month ago",
+						id: "unic2",
+						userName: 'Vitaliy Shevchenko2',
+						date: "a month ago1",
 						text: "test \nREPLY",
 					}],
 				}

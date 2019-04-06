@@ -7,7 +7,7 @@ v-card(flat)
 	v-card-actions.pr-3.pb-3
 		v-spacer
 		v-btn(v-if="cansel") Cancel
-		V-btn(color="success" @click="test") Comment
+		V-btn(color="success") Comment
 	v-card(color="#f7f7f7")
 		v-card-text( v-if="comments.length == 0")
 		v-card-text( v-else v-for="comment in comments" :key="comment.id" )
@@ -18,7 +18,21 @@ v-card(flat)
 					.subheading.text-xs-left
 						.d-inline-block {{comment.userName}}
 						span.caption.font-weight-light.pl-2 {{comment.date}}
-					| {{comment.replies.length+1}}
+						.text.font-weight-regular.py-2 {{comment.text}}
+						span.show-replies.caption.font-weight-light(v-if="comment.replies.length" @click="showReplies = !showReplies")
+							span(v-if="!showReplies") View
+							span(v-if="showReplies") Hide
+							|  replies ({{ comment.replies.length }})
+						v-card(color="#f7f7f7" v-if="showReplies && comment.replies.length" flat)
+							v-card-text( v-for="comment in comment.replies" :key="comment.id" )
+								v-layout(align-start)
+									v-flex(shrink)
+										v-icon.mr-3(color="primary" x-large)  power_settings_new
+									v-flex()
+										.subheading.text-xs-left
+											.d-inline-block {{comment.userName}}
+											span.caption.font-weight-light.pl-2 {{comment.date}}
+											.text.font-weight-regular.py-2 {{comment.text}}
 </template>
 <script>
 export default {
@@ -36,17 +50,18 @@ export default {
 	},
 	data(){
 		return{
-
+			showReplies: false,
 		}
 	},
 	methods:{
-		test(){
-			console.log(this.comments);
-		}
+
 	}
 
 }
 </script>
 <style scoped lang="sass">
-
+.text
+	line-height: 1.5
+.show-replies
+	cursor: pointer
 </style>
